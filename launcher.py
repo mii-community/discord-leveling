@@ -13,6 +13,7 @@ class MyBot(Bot):
             command_prefix=when_mentioned_or(const.BOT_PREFIX), intents=Intents.all()
         )
         print(f"Launching {const.BOT_NAME}")
+        self.remove_command("help")
 
         for cog in Path("cogs/").glob("*.py"):
             try:
