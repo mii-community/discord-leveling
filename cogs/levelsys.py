@@ -21,10 +21,10 @@ class LevelSys(Cog):
                 json.dump(self.leveling, f, indent=4)
             await asyncio.sleep(5)
 
-    def level_up_exp(self, current_level):
+    def level_up_exp(self, current_level: int):
         return round((current_level ** 3) * (4 / 5) + 1)
 
-    def level_up(self, user_id):
+    def level_up(self, user_id: str):
         current_exp = self.leveling[user_id]["exp"]
         current_level = self.leveling[user_id]["level"]
         if current_exp >= self.level_up_exp(current_level) or current_level == 0:
@@ -133,5 +133,5 @@ class LevelSys(Cog):
         await ctx.send(embed=embed)
 
 
-def setup(bot):
+def setup(bot: Bot):
     bot.add_cog(LevelSys(bot))
